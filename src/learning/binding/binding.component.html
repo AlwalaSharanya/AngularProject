@@ -1,0 +1,23 @@
+customerName:
+<input type="text" [(ngModel)]="customerName"/>
+<h4>{{customerName}}</h4>
+
+
+<marquee width="50%" direction="Left" height="50px" >
+    <h4>Our Available Items Are Displayed Below</h4>
+  </marquee>
+<li *ngFor="let item of items let i=index trackBy:trackById" (click)="onItemClicked(item)">
+    <button #file class="btn btn-light" style=" color: blueviolet; background-color: rgb(207, 126, 39); width: 229px;" >{{item.id}} - {{item.name}} - {{item.rate}}</button>
+</li><div *ngIf="clicked; then show else warn"></div>
+<ng-template #show>
+  You have selected: 
+  <input type="text" [(ngModel)]="clickedItem.name">
+</ng-template>
+
+<ng-template #warn>
+  <h4 class="text-danger">Please select the Item </h4>
+</ng-template>
+
+<button [disabled]="buttonStatus"(click)="save($event)">
+   BUY 
+</button>
